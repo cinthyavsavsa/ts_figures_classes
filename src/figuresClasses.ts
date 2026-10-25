@@ -17,13 +17,13 @@ export class Triangle implements Figure {
     private c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('Sides must be greater than 0');
+      throw new Error(`Sides must be > 0: a=${a}, b=${b}, c=${c}`);
     }
 
     const sides = [a, b, c].sort((x, y) => x - y);
 
     if (sides[2] >= sides[0] + sides[1]) {
-      throw new Error("Can't form a triangle");
+      throw new Error(`Can't form triangle: a=${a}, b=${b}, c=${c}`);
     }
   }
 
@@ -43,7 +43,7 @@ export class Circle implements Figure {
     private radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Radius must be greater than 0');
+      throw new Error(`Radius must be > 0: radius=${radius}`);
     }
   }
 
@@ -63,7 +63,9 @@ export class Rectangle implements Figure {
     private height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Dimensions must be greater than 0');
+      throw new Error(
+        `Dimensions must be > 0: width=${width}, height=${height}`,
+      );
     }
   }
 
